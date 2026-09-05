@@ -50,10 +50,10 @@ jobs:
         shell: bash
         run: |
           npm version patch --workspace=packages/ui --no-git-tag-version
-          while npm view "acioleui@$(node -p \"require('./packages/ui/package.json').version\")" version >/dev/null 2>&1; do
+          while npm view "acioleui@$(npm pkg get version --workspace=packages/ui --parseable)" version >/dev/null 2>&1; do
             npm version patch --workspace=packages/ui --no-git-tag-version
           done
-          echo "Publishing acioleui@$(node -p \"require('./packages/ui/package.json').version\")"
+          echo "Publishing acioleui@$(npm pkg get version --workspace=packages/ui --parseable)"
 
       - name: Build package
         run: npm run build --workspace=packages/ui
