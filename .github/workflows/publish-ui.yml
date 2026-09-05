@@ -30,6 +30,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Synchronize release branch
+        run: git fetch origin main && git rebase origin/main
+
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
@@ -39,9 +42,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Synchronize release branch
-        run: git pull --rebase origin main
 
       - name: Check vulnerabilities
         run: npm audit --audit-level=high
