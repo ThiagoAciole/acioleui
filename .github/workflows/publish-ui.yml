@@ -46,8 +46,14 @@ jobs:
       - name: Check vulnerabilities
         run: npm audit --audit-level=high
 
-      - name: Bump patch version
-        run: npm version patch --workspace=packages/ui --no-git-tag-version
+      - name: Select next unpublished patch version
+        shell: bash
+        run: |
+          npm version patch --workspace=packages/ui --no-git-tag-version
+          while npm view "acioleui@$(node -p \"require('./packages/ui/package.json').version\")" version >/dev/null 2>&1; do
+            npm version patch --workspace=packages/ui --no-git-tag-version
+          done
+          echo "Publishing acioleui@$(node -p \"require('./packages/ui/package.json').version\")"
 
       - name: Build package
         run: npm run build --workspace=packages/ui
