@@ -2,6 +2,14 @@
   "name": "acioleui",
   "version": "0.1.4",
   "description": "AcioleUI React component library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThiagoAciole/acioleui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThiagoAciole/acioleui/issues"
+  },
+  "homepage": "https://github.com/ThiagoAciole/acioleui#readme",
   "keywords": [
     "react",
     "components",
