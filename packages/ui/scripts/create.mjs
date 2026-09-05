@@ -16,7 +16,7 @@ if (existsSync(target)) {
   process.exit(1);
 }
 const files = {
-  'package.json': JSON.stringify({ name: name.toLowerCase().replace(/[^a-z0-9-_]/g, '-'), private: true, type: 'module', scripts: { dev: 'vite', build: 'tsc && vite build', preview: 'vite preview' }, dependencies: { acioleui: '^0.1.7', react: '^18.3.1', 'react-dom': '^18.3.1' }, devDependencies: { '@vitejs/plugin-react': '^4.4.1', typescript: '^5.4.0', vite: '^7.3.1' } }, null, 2) + '\n',
+  'package.json': JSON.stringify({ name: name.toLowerCase().replace(/[^a-z0-9-_]/g, '-'), private: true, type: 'module', scripts: { dev: 'vite', build: 'tsc && vite build', preview: 'vite preview' }, dependencies: { acioleui: '^0.1.7', react: '^18.3.1', 'react-dom': '^18.3.1' }, devDependencies: { '@vitejs/plugin-react': '^4.4.1', '@types/react': '^18.3.0', '@types/react-dom': '^18.3.0', typescript: '^5.4.0', vite: '^7.3.1' } }, null, 2) + '\n',
   'index.html': '<div id="root"></div><script type="module" src="/src/main.tsx"></script>\n',
   'tsconfig.json': JSON.stringify({ compilerOptions: { target: 'ES2020', lib: ['ES2020', 'DOM'], module: 'ESNext', moduleResolution: 'Bundler', strict: true, jsx: 'react-jsx', noEmit: true, skipLibCheck: true }, include: ['src'] }, null, 2) + '\n',
   'vite.config.ts': "import { defineConfig } from 'vite';\nimport react from '@vitejs/plugin-react';\nexport default defineConfig({ plugins: [react()] });\n",
