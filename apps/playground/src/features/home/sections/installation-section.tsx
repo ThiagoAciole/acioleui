@@ -1,5 +1,7 @@
 import { Box, Code, Flex, Icon, PageHeader, Text } from 'acioleui';
 import { InstallStep } from '../../../components/InstallStep';
+import { CodePanel } from '../../../components/CodePanel';
+import { DocSection } from '../../../components/DocSection';
 import { homeContent } from '../content';
 
 export function InstallationSection() {
@@ -45,6 +47,13 @@ export function InstallationSection() {
           />
         ))}
       </Box>
+
+      <DocSection title={installation.template.title}>
+        <Flex direction="column" gap="3">
+          <Text color="neutral">{installation.template.description}</Text>
+          <CodePanel code={installation.template.code} language="bash" />
+        </Flex>
+      </DocSection>
     </>
   );
 }

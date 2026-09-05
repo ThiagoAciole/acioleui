@@ -12,9 +12,10 @@
   },
   "dependencies": {
     "acioleui": "*",
+    "esbuild": "0.28.2",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "react-router-dom": "^6.30.3"
+    "react-router-dom": "^7.18.3"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",

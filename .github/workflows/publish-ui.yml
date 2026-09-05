@@ -1,17 +1,23 @@
-name: Publish acioleui
+name: Release acioleui
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - 'packages/ui/**'
+      - 'packages/ui/src/**'
+      - 'packages/ui/package.json'
+      - 'packages/ui/vite.config.ts'
+      - 'package-lock.json'
+  workflow_dispatch:
+
+concurrency:
+  group: publish-acioleui
+  cancel-in-progress: false
 
 jobs:
   publish:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip ci]')
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
-
     permissions:
       contents: write
 
@@ -19,17 +25,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Check vulnerabilities
+        run: npm audit --audit-level=high
+
+      - name: Bump patch version
+        run: npm version patch --workspace=packages/ui --no-git-tag-version
 
       - name: Build package
         run: npm run build --workspace=packages/ui
@@ -39,18 +50,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Bump patch version
-        working-directory: packages/ui
-        run: npm version patch --no-git-tag-version
-
       - name: Commit and push version bump
         run: |
-          git add packages/ui/package.json
-          git commit -m "chore: bump acioleui version [skip ci]"
+          git add packages/ui/package.json package-lock.json
+          git commit -m "chore: release acioleui [skip ci]"
           git push
 
       - name: Publish to npm
-        working-directory: packages/ui
-        run: npm publish --access public
+        run: npm publish --workspace=packages/ui --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

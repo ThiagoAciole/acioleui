@@ -1,5 +1,5 @@
 import './Sidebar.css';
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { classNames } from '../../utils/classNames';
 import { Icon } from '../../icons';
 import { Input } from '../Input/Input';
@@ -105,7 +105,7 @@ function SidebarRoot({
         (child) => React.isValidElement(child) && child.type === SidebarFooter
     );
 
-    const toggleCollapsed = () => {
+    const toggleCollapsed = useCallback(() => {
         const nextValue = !collapsed;
 
         if (!isControlled) {
@@ -113,7 +113,7 @@ function SidebarRoot({
         }
 
         onToggle?.(nextValue);
-    };
+    }, [collapsed, isControlled, onToggle]);
 
     const contextValue = useMemo(
         () => ({
@@ -124,7 +124,7 @@ function SidebarRoot({
             enableSearch,
             searchPlaceholder,
         }),
-        [collapsed, searchTerm, enableSearch, searchPlaceholder]
+        [collapsed, toggleCollapsed, searchTerm, enableSearch, searchPlaceholder]
     );
 
     return (
