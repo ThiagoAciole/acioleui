@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Synchronize release branch
+        run: git pull --rebase origin main
+
       - name: Check vulnerabilities
         run: npm audit --audit-level=high
 
@@ -62,6 +65,4 @@ jobs:
           # The build regenerates this tracked source file before the release commit.
           git add packages/ui/package.json package-lock.json packages/ui/src/icons/generated.tsx
           git commit -m "chore: release acioleui [skip ci]"
-          git fetch origin main
-          git rebase origin/main
           git push origin HEAD:main
