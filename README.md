@@ -34,6 +34,6 @@ import { Icon, iconRegistry } from 'acioleui/icons';
 
 O workflow `.github/workflows/publish-ui.yml` publica `packages/ui` quando há alteração na biblioteca na branch `main`. Também pode ser executado manualmente em **Actions → Release acioleui → Run workflow**.
 
-Configure o secret `NPM_TOKEN` em **Settings → Secrets and variables → Actions**. O token precisa ter permissão de publicação no pacote `acioleui`.
+Configure o Trusted Publisher do pacote `acioleui` no npm: provedor **GitHub Actions**, usuário/organização `ThiagoAciole`, repositório `acioleui` e workflow `publish-ui.yml`. Não é necessário manter `NPM_TOKEN` no GitHub.
 
 O workflow instala com `npm ci`, bloqueia vulnerabilidades high/critical, incrementa a versão patch, gera o build, publica no npm e commita a nova versão com `[skip ci]` para evitar loop.
