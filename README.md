@@ -23,6 +23,18 @@ function App() {
 }
 ```
 
+## Criar um projeto
+
+Depois de publicado, o gerador pode ser usado em qualquer pasta, sem clonar este repositório:
+
+```bash
+npm create acioleui@latest meu-projeto -- --install
+cd meu-projeto
+npm run dev
+```
+
+O projeto já inclui o layout inicial, `ThemeProvider`, `AGENTS.md` e `.agents/skills/acioleui-design`.
+
 ## Entry points publicos
 
 ```ts

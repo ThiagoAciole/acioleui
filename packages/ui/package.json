@@ -10,6 +10,9 @@
     "url": "https://github.com/ThiagoAciole/acioleui/issues"
   },
   "homepage": "https://github.com/ThiagoAciole/acioleui#readme",
+  "bin": {
+    "create-acioleui": "./scripts/create.mjs"
+  },
   "keywords": [
     "react",
     "components",
@@ -40,7 +43,9 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "scripts/create.mjs",
+    ".agents"
   ],
   "sideEffects": [
     "**/*.css"

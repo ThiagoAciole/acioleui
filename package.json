@@ -10,6 +10,7 @@
     "dev": "npm run dev --workspace=apps/playground",
     "build": "npm run build --workspace=packages/ui",
     "build:all": "npm run build --workspace=packages/ui && npm run build --workspace=apps/playground",
+    "create:project": "node scripts/create-project.mjs",
     "pack:acioleui": "npm pack --workspace=packages/ui",
     "publish:acioleui": "npm publish --workspace=packages/ui",
 
