@@ -43,6 +43,7 @@ export * from './Tooltip/Tooltip';
 export * from './Toast/Toast';
 export * from './Table/Table';
 export * from './Sidebar/Sidebar';
+export * from './Shell/Shell';
 export * from './TopBar/TopBar';
 export * from './PageHeader/PageHeader';
 export * from './Breadcrumb/Breadcrumb';
