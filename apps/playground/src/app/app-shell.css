@@ -1,9 +1,37 @@
 .playground-shell {
   height: 100vh;
   overflow: hidden;
-  background: #f8fafc;
+  background: #f7f9fc;
 }
 
+.playground-shell__sidebar {
+  --sidebar-width: 280px;
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #e5e9f0;
+  --sidebar-active-bg: #f2efff;
+  --sidebar-active-text: #625bff;
+  --sidebar-item-radius: 8px;
+  box-shadow: none;
+}
+
+.playground-shell__sidebar .sidebar__header {
+  min-height: 104px;
+  padding: 24px;
+}
+
+.playground-shell__sidebar .sidebar__header-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.playground-shell__sidebar .sidebar__header-content img {
+  height: 22px !important;
+  width: auto;
+}
+
+.playground-shell__sidebar > div:not(.sidebar__header) {
+  padding: 24px 16px !important;
+}
 
 .playground-shell__sidebar .sidebar__group {
   padding-top: 14px;
@@ -21,9 +49,9 @@
 }
 
 .playground-shell__sidebar .sidebar__item {
-  min-height: 42px;
-  margin-top: 4px;
-  color: #475569;
+  min-height: 44px;
+  margin-top: 0;
+  color: #65728b;
 }
 
 .playground-shell__sidebar .sidebar__item-label {
@@ -40,7 +68,7 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  background: #f4f7fc;
+  background: #f7f9fc;
 }
 
 .playground-shell__body {
@@ -51,16 +79,18 @@
 }
 
 .playground-shell__topbar {
-  min-height: 66px;
-  padding: 0 18px;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px);
+  min-height: 72px;
+  padding: 0 24px;
+  background: #ffffff;
+  border-bottom: 0;
+  backdrop-filter: none;
 }
 
 .playground-shell__topbar .icon-button {
-  border: 1px solid rgba(124, 58, 237, 0.18);
-  background: rgba(124, 58, 237, 0.08);
-  color: #7c3aed;
+  border: 0;
+  border-radius: 7px;
+  background: #ded8ff;
+  color: #625bff;
 }
 
 [data-theme='dark'] .playground-shell,

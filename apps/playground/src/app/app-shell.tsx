@@ -26,25 +26,23 @@ export function AppShell({
 
   return (
     <Flex className="playground-shell">
-      <Sidebar collapsed={sidebarCollapsed} onToggle={onSidebarToggle}>
+      <Sidebar className="playground-shell__sidebar" collapsed={sidebarCollapsed} onToggle={onSidebarToggle}>
         <Sidebar.Header
           icon={<img src={icon} alt="LabsUI Icon" style={{ height: '24px', }} />}
           logo={<img src={theme === 'light' ? logoLight : logoDark} alt="LabsUI Logo" style={{ height: '18px' }} />}
         />
 
         <Box style={{ padding: 'var(--space-2)', overflowY: 'auto', flex: 1 }}>
-          <Sidebar.Group title="Home" leftIcon={<Icon name="home" size={16} />} defaultOpen>
-            {homeRoutes.map((route) => (
-              <Sidebar.Item
-                key={route.id}
-                icon={<Icon name={route.icon} size={16} />}
-                active={currentRouteId === route.id}
-                onClick={() => onNavigate(route.id)}
-              >
-                {route.name}
-              </Sidebar.Item>
-            ))}
-          </Sidebar.Group>
+          {homeRoutes.map((route) => (
+            <Sidebar.Item
+              key={route.id}
+              icon={<Icon name={route.icon} size={16} />}
+              active={currentRouteId === route.id}
+              onClick={() => onNavigate(route.id)}
+            >
+              {route.name}
+            </Sidebar.Item>
+          ))}
 
           {sidebarGroups.map((group) => (
             <Sidebar.Group
