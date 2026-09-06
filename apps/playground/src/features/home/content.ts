@@ -94,14 +94,6 @@ function AppProviders({ children }) {
 }`,
       },
     ],
-    template: {
-      title: 'Skill e template de projeto',
-      description: 'Use a skill para orientar agentes de código e gere uma base Vite com Sidebar e Home pronta para evoluir.',
-      code: `npm run skills
-npm run create:project -- meu-projeto --install
-cd meu-projeto
-npm run dev`,
-    },
   },
   usage: {
     header: {
