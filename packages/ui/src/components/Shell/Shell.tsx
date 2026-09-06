@@ -53,7 +53,7 @@ export const Shell: React.FC<ShellProps> = ({
         <div className={classNames('shell', className)} {...props}>
             <Sidebar className="shell__sidebar">
                 {config.brand ? (
-                    <Sidebar.Header icon={config.brand.logo} logo={config.brand.label} collapsible={false} />
+                    <Sidebar.Header icon={config.brand.logo} logo={config.brand.label} />
                 ) : null}
                 <div className="shell__navigation">{navigation}</div>
             </Sidebar>
