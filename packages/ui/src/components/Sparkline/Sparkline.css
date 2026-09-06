@@ -1,0 +1,28 @@
+.sparkline {
+  width: 100%;
+  min-height: 32px;
+  --sparkline-color: var(--color-primary);
+}
+
+.sparkline svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sparkline__line {
+  fill: none;
+  stroke: var(--sparkline-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.sparkline__point {
+  fill: var(--bg-surface);
+  stroke: var(--sparkline-color);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}

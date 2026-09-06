@@ -5,6 +5,7 @@ export type Category =
   | 'typography'
   | 'forms'
   | 'data-display'
+  | 'charts'
   | 'navigation'
   | 'feedback'
   | 'overlay'
